@@ -1,0 +1,17 @@
+div{ 
+    display:flex; 
+}
+
+.container{
+    flex-direction:row; 
+    justify-content:center;
+}
+
+.input_container{
+    margin-top:3rem;
+    flex-direction:column;
+    align-items:flex-start
+}
+.list_container{
+    flex-direction:column;
+}
