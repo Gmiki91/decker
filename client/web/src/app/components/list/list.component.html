@@ -1,16 +1,9 @@
 <div style="margin-top:3rem; width:fit-content">
-    <mat-accordion>
-        <mat-expansion-panel expanded togglePosition="after">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    {{title}}
-                </mat-panel-title>
-            </mat-expansion-panel-header>
+   
             <ul>
-                <li *ngFor="let item of deck" (click)="onClick(item)">{{item}}</li>
+                <li *ngFor="let deck of decks" (click)="onClick(deck)">{{deck.title}}</li>
             </ul>
-            <mat-paginator [length]="deck.length" [pageSize]="10" hidePageSize>
+            <mat-paginator [length]="decks.length" [pageSize]="10" hidePageSize>
             </mat-paginator>
-        </mat-expansion-panel>
-    </mat-accordion>
+     
 </div>

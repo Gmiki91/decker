@@ -1,16 +1,11 @@
 <div class="container">
-    <div class="list_container">
-        <app-list [title]="'Your decks'" [deck]="list1">
+    <div class="list">
+        <h2>Decks</h2>
+        <div class="type">
+            <div>Active</div>
+            <div>Inactive</div>
+        </div>
+        <app-list [decks]="list1">
         </app-list>
-        <app-list [title]="'Other decks'" [deck]="list2">
-        </app-list>
-        <app-list [title]="'Decks looking for contributions'" [deck]="list3">
-        </app-list>
-    </div>
-    <div class="input_container">
-        <input placeholder="Search deck by title">
-        <button style="margin-top:2rem" (click)="sajt()">
-            Create new deck
-        </button>
     </div>
 </div>

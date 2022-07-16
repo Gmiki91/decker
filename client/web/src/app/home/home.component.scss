@@ -7,11 +7,13 @@ div{
     justify-content:center;
 }
 
-.input_container{
-    margin-top:3rem;
+.container .list{
     flex-direction:column;
-    align-items:flex-start
 }
-.list_container{
-    flex-direction:column;
+.container .list .type{
+    display:flex; flex-direction:row ;
+    
+}
+.container .list .type div{
+    padding:5%;
 }

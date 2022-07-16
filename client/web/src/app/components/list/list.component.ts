@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Deck } from 'src/app/models/Deck';
 
 @Component({
   selector: 'app-list',
@@ -7,17 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  @Input() title:string;
-  @Input() deck:string[];
+
+  @Input() decks:Deck[];
   constructor() { 
-    this.title='';
-    this.deck = [];
+    this.decks = [];
   }
 
   ngOnInit(): void {
   }
 
-  onClick(item:string){
-    console.log(item);
+  onClick(deck:Deck){
+    console.log(deck);
   }
 }
