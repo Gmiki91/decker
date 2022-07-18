@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable, map, filter } from 'rxjs';
 import { Deck } from '../models/Deck';
 import { DeckService } from '../services/deck.service';
 
@@ -9,23 +9,26 @@ import { DeckService } from '../services/deck.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-
-  list1: Deck[];
-  // list2 = ['Dinnye', 'Cseresznye'];
-  // list3 = ['Banán', 'Szilva'];
-
-  constructor(private router: Router, private deckService: DeckService) {
-    this.list1 = [];
+  list!: Deck[];
+  currentSort: 'active' | 'inactive';
+  constructor(private deckService: DeckService) {
+    this.currentSort = 'active';
   }
   ngOnInit(): void {
-    this.deckService.getDecks().subscribe(decks => {
-      console.log(decks)
-      this.list1 = decks;
-    })
+    this.deckService.getDecks().pipe(
+      map(decks => decks
+        .filter(deck => {
+          if (this.currentSort == 'active')
+            return deck.cards.length >= 50
+          else
+            return deck.cards.length < 50
+        })))
+      .subscribe(decks => this.list = decks)
+    this.deckService.updateDecks();
   }
 
-  sajt() {
-    this.router.navigate(['/new-deck'])
+  toggleSort(): void {
+    this.currentSort = this.currentSort === 'active' ? 'inactive' : 'active';
+    this.deckService.updateDecks();
   }
 }

@@ -8,11 +8,7 @@ import { Deck } from 'src/app/models/Deck';
 })
 export class ListComponent implements OnInit {
 
-
-  @Input() decks:Deck[];
-  constructor() { 
-    this.decks = [];
-  }
+  @Input() decks!:Deck[];
 
   ngOnInit(): void {
   }

@@ -1,8 +1,10 @@
 <div style="margin-top:3rem; width:fit-content">
-   
             <ul>
                 <li *ngFor="let deck of decks" (click)="onClick(deck)">{{deck.title}}</li>
             </ul>
+            <div *ngIf="decks.length===0">
+                Empty list :(
+            </div>
             <mat-paginator [length]="decks.length" [pageSize]="10" hidePageSize>
             </mat-paginator>
      

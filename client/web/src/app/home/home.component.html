@@ -2,10 +2,10 @@
     <div class="list">
         <h2>Decks</h2>
         <div class="type">
-            <div>Active</div>
-            <div>Inactive</div>
+            <button (click)="toggleSort()" [ngClass]="currentSort==='active' ? 'active':'inactive'">Active</button>
+            <button (click)="toggleSort()" [ngClass]="currentSort==='inactive' ? 'active':'inactive'">Inactive</button>
         </div>
-        <app-list [decks]="list1">
+        <app-list [decks]="list">
         </app-list>
     </div>
 </div>

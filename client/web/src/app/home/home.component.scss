@@ -17,3 +17,10 @@ div{
 .container .list .type div{
     padding:5%;
 }
+.active, .inactive{
+    padding:5%;
+    cursor:pointer;
+}
+.active{
+    border:1px inset;
+}
