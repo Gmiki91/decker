@@ -1,6 +1,9 @@
 <div style="margin-top:3rem; width:fit-content">
             <ul>
-                <li *ngFor="let deck of decks" (click)="onClick(deck)">{{deck.title}}</li>
+                <li *ngFor="let deck of decks" (click)="onLog(deck)">{{deck.title}}
+                    <button (click)="onClick(deck)">+</button>
+                </li>
+                
             </ul>
             <div *ngIf="decks.length===0">
                 Empty list :(

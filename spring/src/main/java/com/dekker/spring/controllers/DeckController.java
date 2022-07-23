@@ -30,7 +30,10 @@ public class DeckController {
     // create deck
 	@PostMapping("/decks")
 	public Response createDeck(@RequestBody Deck deck) {
-		deckRepository.save(deck);
+        Deck newDeck = new Deck();
+        newDeck.setDescription(deck.getDescription());
+        newDeck.setTitle(deck.getTitle());
+		deckRepository.save(newDeck);
         return new Response("success");
 	}
 }
