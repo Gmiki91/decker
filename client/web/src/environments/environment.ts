@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url: 'http://localhost:3001'
+  NODE_URL: 'http://localhost:3001',
+  SPRING_URL: 'http://localhost:8080'
 };
 
 /*

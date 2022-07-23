@@ -16,13 +16,8 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.deckService.getDecks().pipe(
-      map(decks => decks
-        .filter(deck => {
-          if (this.currentSort == 'active')
-            return deck.cards.length >= 50
-          else
-            return deck.cards.length < 50
-        })))
+      map(decks =>
+        decks.filter(deck => this.currentSort == 'active' ? deck.cards.length >= 50 : deck.cards.length < 50)))
       .subscribe(decks => this.list = decks)
     this.deckService.updateDecks();
   }
