@@ -13,7 +13,7 @@ import com.dekker.spring.repositories.DeckRepository;
 import com.dekker.spring.models.Deck;
 import com.dekker.spring.models.Response;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://127.0.0.1:4200")
 @RestController
 @RequestMapping("/")
 public class DeckController {
