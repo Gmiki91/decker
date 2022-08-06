@@ -1,4 +1,11 @@
-<nav style="display:flex; justify-content:center">
-<a style="padding-right:3rem" routerLink="/">Home</a>
-<a (click)="onNewDeck()">New deck</a>
+<nav class="container">
+    <div class="left-side">
+        <anchor route="/">Dekker</anchor>
+    </div>
+    <div class="right-side">
+        
+        <anchor img="account_circle" route="/acc"><span>Account</span></anchor>
+        <anchor img="exit_to_app" route="/out"><span>Logout</span></anchor>
+    </div>
 </nav>
+<!-- <a (click)="onNewDeck()">New deck</a> -->

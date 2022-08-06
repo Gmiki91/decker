@@ -3,11 +3,12 @@ import { Deck } from 'src/app/models/Deck';
 import { DeckService } from 'src/app/services/deck.service';
 
 @Component({
-  selector: 'app-create-deck',
-  templateUrl: './create-deck.component.html',
-  styleUrls: ['./create-deck.component.scss']
+  selector: 'app-deckform',
+  templateUrl: './deckform.component.html',
+  styleUrls: ['./deckform.component.scss']
 })
-export class CreateDeckComponent implements OnInit {
+export class DeckformComponent implements OnInit {
+
   @ViewChild('title') title!: ElementRef;
   @ViewChild('description') description!: ElementRef;
   constructor(private deckService:DeckService) { }
@@ -18,7 +19,7 @@ export class CreateDeckComponent implements OnInit {
     const title = this.title.nativeElement.value;
     const description = this.description.nativeElement.value;
     const deck: Deck = {
-      title, description, cards: []
+      title, description,owner:2,favorite:false, cards: []
     }
     this.deckService.addDeck(deck);
   }

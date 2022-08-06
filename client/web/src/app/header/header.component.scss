@@ -1,0 +1,32 @@
+@import "../../variables";
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color:$primary-color;
+    box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+    position: fixed;
+    padding:1rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    min-width: 400px;
+}
+
+.left-side {
+    margin-left: 2rem;
+    font-size:2rem;
+}
+
+.right-side {
+    margin-right: 2rem;
+    font-size:1.5rem;
+    display:flex;
+}
+
+@media (max-width: 550px){
+    span{
+        display:none;
+    }
+}

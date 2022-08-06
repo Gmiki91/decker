@@ -1,0 +1,30 @@
+@import "../../variables";
+.main {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    margin-top: 3rem;
+}
+.description{
+    font-style: italic;
+}
+.content{
+    display:flex;
+    justify-content:space-around;
+    margin-top:3rem;
+}
+.content h2{
+    width:15rem;
+    background-color:$secondary-color;
+    text-align: center;
+}
+.list{
+    flex-direction: column;
+
+}
+.list-element{
+    margin-right:1rem;
+    text-align:right;
+}

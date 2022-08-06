@@ -1,26 +1,65 @@
-div{ 
-    display:flex; 
+@import "../../variables";
+
+mat-form-field {
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
 }
 
-.container{
-    flex-direction:row; 
-    justify-content:center;
+mat-form-field input {
+    background-color: white;
+    padding: .25rem;
+    text-align: center;
+    height: fit-content;
+    border-radius: 5px;
 }
 
-.container .list{
-    flex-direction:column;
+mat-label {
+    color: black;
+    font-weight: bold
 }
-.container .list .type{
-    display:flex; flex-direction:row ;
-    
+
+
+:host ::ng-deep .no-padding .mat-form-field-infix {
+    border:0;
+    margin-top:0.1rem;
 }
-.container .list .type div{
-    padding:5%;
+:host ::ng-deep .no-padding .mat-form-field-wrapper {
+    padding: 0;
 }
-.active, .inactive{
-    padding:5%;
-    cursor:pointer;
+
+::ng-deep .mat-form-field-underline {
+    display: none;
 }
-.active{
-    border:1px inset;
+
+.btn-primary {
+    font-size: 1.25rem;
+}
+
+.main {
+    position: relative;
+    z-index: 1;
+    display: block;
+    height: 100%;
+    overflow: auto;
+    margin-top: 3rem;
+}
+
+.search-container {
+    display: flex;
+    align-items: center
+}
+
+.new-deck-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+.new-deck-container:hover{
+    opacity:0.8;
+}
+// there is already an opacity for button in the global settings
+.new-deck-container button:hover{
+    opacity:1;
 }

@@ -1,11 +1,21 @@
-<div class="container">
-    <div class="list">
-        <h2>Decks</h2>
-        <div class="type">
-            <button (click)="toggleSort()" [ngClass]="currentSort==='active' ? 'active':'inactive'">Active</button>
-            <button (click)="toggleSort()" [ngClass]="currentSort==='inactive' ? 'active':'inactive'">Inactive</button>
+<div class="main">
+    <div class="sub-header">
+        <div class="sub-header-content">
+        <div class="search-container">
+            <mat-icon>search</mat-icon>
+            <mat-form-field class="no-padding">
+                <mat-label>Deckname</mat-label>
+                <input matInput name="search" [(ngModel)]="search">
+            </mat-form-field>
         </div>
-        <app-list [decks]="list">
-        </app-list>
+        <div class = new-deck-container>
+            <mat-icon>library_add</mat-icon>
+            <button class="btn btn-primary" (click)="onNewDeck()">New deck</button>
+        </div>
+        <mat-slide-toggle checked (change)="toggleChanges($event)">Active decks</mat-slide-toggle>
     </div>
 </div>
+            <app-list [active]="toggle" [decks]="list">
+            </app-list>
+   
+    

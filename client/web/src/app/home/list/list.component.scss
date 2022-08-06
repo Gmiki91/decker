@@ -1,0 +1,43 @@
+@import "../../../variables";
+li{ 
+    cursor:pointer;
+}
+.column-top{
+    background-color:$secondary-color;
+}
+.container{
+    display:flex;
+    justify-content:center;
+}
+mat-header-cell{
+    background-color:$secondary-color;
+    color:$text-color;
+    font-size:22px;
+    justify-content:center;
+}
+mat-cell{
+    justify-content:center;
+}
+mat-row:hover{
+    background-color:$dim-yellow;
+}
+.decks-table{
+    margin-top:5rem;
+    width:95%;
+}
+
+.w-25{
+   max-width: 25%;
+}
+
+.w-5{
+    max-width: 5%;
+}
+
+.w-10{
+    max-width: 10%;
+}
+
+.w-30{
+    max-width: 30%;
+}

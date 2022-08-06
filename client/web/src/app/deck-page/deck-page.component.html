@@ -1,0 +1,28 @@
+<div class="main">
+    <div class="sub-header">
+        <div class="sub-header-content" *ngIf="deck">
+            <span>{{deck.title}}</span>
+            <span class="description">{{deck.description}}</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="list shadow game-list" *ngIf="deck && isDeckActive">
+            <h2>Open games</h2>
+            
+            <span>szia</span>
+        </div>
+        <div class="list shadow card-list" *ngIf="deck">
+            <h2>Cards</h2>
+            <h4 >Accepted</h4>
+            <mat-divider></mat-divider>
+            <p class="list-element" *ngFor="let card of acceptedCards">
+                {{card.front}}
+            </p>
+            <h4>Pending</h4>
+            <mat-divider></mat-divider>
+            <p class="list-element" *ngFor="let card of pendingCards">
+                {{card.front}}
+            </p>
+        </div>
+    </div>
+</div>

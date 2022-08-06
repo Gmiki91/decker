@@ -1,0 +1,18 @@
+@import "../../../variables";
+a{
+    color:$text-color;
+    text-decoration: none;
+    padding-right:1.5rem;
+}
+div{
+    font-family:'MV Boli';
+    font-weight: bold;
+}
+
+.icon{
+    padding-right:0.5rem;
+    vertical-align:middle;
+    color:$text-color;
+}
+
+
