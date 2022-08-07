@@ -1,5 +1,17 @@
 <div class="container">
-    <input #title placeholder="Name of the deck">
-    <textarea #description placeholder="Description" matinput rows="5" cols="40" style="margin:1rem"></textarea>
-    <button (click)="onSave()">Save deck</button>
+    <!-- <input #title placeholder="Name of the deck">
+    <textarea #description placeholder="Description" matinput rows="5" cols="40" style="margin:1rem"></textarea> -->
+    <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" [formControl]="title" required>
+        <mat-error>required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput type="text"  [formControl]="description" #input ></textarea>
+    </mat-form-field>
+    <div *ngFor="let card of cards">{{card.front}}</div>
+    <button class="button-7" *ngIf="!isCardFormVisible" (click)="showCardForm()">Add card</button>
+    <app-cardform (cardEmitter)="saveCard($event)" *ngIf="isCardFormVisible"></app-cardform>
+    <button class="button-7" (click)="onSave()">Save deck</button>
 </div>

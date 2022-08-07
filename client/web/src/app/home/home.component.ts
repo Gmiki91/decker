@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { Observable, map, filter } from 'rxjs';
+import { DeckformComponent } from '../components/deckform/deckform.component';
 import { Deck } from '../models/Deck';
 import { DeckService } from '../services/deck.service';
-import { NewDeckComponent } from './new-deck.component';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +30,6 @@ export class HomeComponent implements OnInit {
 
   }
   onNewDeck():void{
-    this.dialog.open(NewDeckComponent);
+    this.dialog.open(DeckformComponent);
   }
 }

@@ -1,21 +1,20 @@
 <div class="main">
     <div class="sub-header">
         <div class="sub-header-content">
-        <div class="search-container">
-            <mat-icon>search</mat-icon>
-            <mat-form-field class="no-padding">
-                <mat-label>Deckname</mat-label>
-                <input matInput name="search" [(ngModel)]="search">
-            </mat-form-field>
+            <div class=new-deck-container>
+                <mat-icon>library_add</mat-icon>
+                <button class="btn btn-primary" (click)="onNewDeck()">New deck</button>
+            </div>
+            <div class="search-container">
+                <mat-icon>search</mat-icon>
+                <mat-form-field class="no-padding">
+                    <mat-label>Deckname</mat-label>
+                    <input matInput name="search" [(ngModel)]="search">
+                </mat-form-field>
+            </div>
+            <mat-slide-toggle class="pd-l-1" checked (change)="toggleChanges($event)">Active decks</mat-slide-toggle>
         </div>
-        <div class = new-deck-container>
-            <mat-icon>library_add</mat-icon>
-            <button class="btn btn-primary" (click)="onNewDeck()">New deck</button>
-        </div>
-        <mat-slide-toggle checked (change)="toggleChanges($event)">Active decks</mat-slide-toggle>
     </div>
+    <app-list [active]="toggle" [decks]="list">
+    </app-list>
 </div>
-            <app-list [active]="toggle" [decks]="list">
-            </app-list>
-   
-    

@@ -18,37 +18,33 @@
 
 </div> -->
 <div class="container">
-<mat-table class="decks-table mat-elevation-z8" [dataSource]="dataSource">
+    <mat-table class="decks-table mat-elevation-z8" [dataSource]="dataSource">
 
-    <ng-container  matColumnDef="title">
-        <mat-header-cell [ngClass]="'w-25'" *matHeaderCellDef>Title</mat-header-cell>
-        <mat-cell [ngClass]="'w-25'" *matCellDef="let deck">{{deck.title}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="title">
+            <mat-header-cell [ngClass]="'w-25'" *matHeaderCellDef>Title</mat-header-cell>
+            <mat-cell [ngClass]="'w-25'" *matCellDef="let deck">{{deck.title}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="owner">
-        <mat-header-cell [ngClass]="'w-5'" *matHeaderCellDef></mat-header-cell>
-        <mat-cell [ngClass]="'w-5'"
-                  *matCellDef="let deck">{{deck.owner}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="status">
-        <mat-header-cell [ngClass]="'w-30'" *matHeaderCellDef>Status</mat-header-cell>
-        <mat-cell [ngClass]="'w-30'"
-                  *matCellDef="let deck">{{deck.status}}</mat-cell>
-    </ng-container>
-    <ng-container [ngClass]="'w-30'" matColumnDef="updatedAt">
-        <mat-header-cell *matHeaderCellDef>{{updatedAt}}</mat-header-cell>
-        <mat-cell [ngClass]="'w-30'"
-                  *matCellDef="let deck">{{deck.updatedAt}}</mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="favorite">
-        <mat-header-cell [ngClass]="'w-10'" *matHeaderCellDef>Favorite</mat-header-cell>
-        <mat-cell [ngClass]="'w-10'"
-                  *matCellDef="let deck">{{deck.favorite}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="owner">
+            <mat-header-cell [ngClass]="'w-5'" *matHeaderCellDef></mat-header-cell>
+            <mat-cell [ngClass]="'w-5'" *matCellDef="let deck">{{deck.owner}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <mat-header-cell [ngClass]="'w-30'" *matHeaderCellDef>Status</mat-header-cell>
+            <mat-cell [ngClass]="'w-30'" *matCellDef="let deck">{{deck.status}}</mat-cell>
+        </ng-container>
+        <ng-container [ngClass]="'w-30'" matColumnDef="updatedAt">
+            <mat-header-cell *matHeaderCellDef>{{updatedAt}}</mat-header-cell>
+            <mat-cell [ngClass]="'w-30'" *matCellDef="let deck">{{deck.updatedAt}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="favorite">
+            <mat-header-cell [ngClass]="'w-10'" *matHeaderCellDef>Favorite</mat-header-cell>
+            <mat-cell [ngClass]="'w-10'" *matCellDef="let deck">{{deck.favorite}}</mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-    <mat-row (click)="onRowClick(row)" *matRowDef="let row; columns: displayedColumns"></mat-row>
+        <mat-row (click)="onRowClick(row)" *matRowDef="let row; columns: displayedColumns"></mat-row>
 
-</mat-table>
+    </mat-table>
 </div>

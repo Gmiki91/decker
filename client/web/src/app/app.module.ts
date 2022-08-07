@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './shared/material.module'
 
@@ -14,7 +14,6 @@ import { AnchorComponent } from './header/anchor/anchor.component';
 import { DeckformComponent } from './components/deckform/deckform.component';
 import { DeckPageComponent } from './deck-page/deck-page.component';
 import { CardformComponent } from './components/cardform/cardform.component';
-import { NewDeckComponent } from './home/new-deck.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import { NewDeckComponent } from './home/new-deck.component';
     AnchorComponent,
     DeckPageComponent,
     CardformComponent,
-    NewDeckComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +33,7 @@ import { NewDeckComponent } from './home/new-deck.component';
     FormsModule,
     HttpClientModule,
     MaterialModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

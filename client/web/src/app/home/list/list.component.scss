@@ -5,10 +5,7 @@ li{
 .column-top{
     background-color:$secondary-color;
 }
-.container{
-    display:flex;
-    justify-content:center;
-}
+
 mat-header-cell{
     background-color:$secondary-color;
     color:$text-color;
@@ -21,9 +18,14 @@ mat-cell{
 mat-row:hover{
     background-color:$dim-yellow;
 }
+.container{
+    display:flex;
+    justify-content:center;
+}
 .decks-table{
     margin-top:5rem;
     width:95%;
+    max-width:1140px;
 }
 
 .w-25{
