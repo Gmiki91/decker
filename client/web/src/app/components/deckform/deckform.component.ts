@@ -11,27 +11,30 @@ import { DeckService } from 'src/app/services/deck.service';
 })
 export class DeckformComponent implements OnInit {
 
-  // @ViewChild('title') title!: ElementRef;
-  // @ViewChild('description') description!: ElementRef;
   title:FormControl =new FormControl("",[Validators.required]);
   description:FormControl =new FormControl();
   isCardFormVisible:boolean = false;
   cards:Card[] = [];
+  selectedCard:Card|null=null;
+
   constructor(private deckService:DeckService) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   onSave(): void {
     const title = this.title.value;
     const description = this.description.value;
     const deck: Deck = {
-      title, description,owner:2,favorite:false, cards: []
+      title, description,owner:2,favorite:false, cards: this.cards
     }
     this.deckService.addDeck(deck);
   }
   showCardForm():void{
     this.isCardFormVisible =  !this.isCardFormVisible;
-
+  }
+  onCard(card:Card):void{
+    this.selectedCard=card;
+    this.isCardFormVisible=true;
+    console.log(card);
   }
   saveCard(card:Card):void {
     this.isCardFormVisible=false;

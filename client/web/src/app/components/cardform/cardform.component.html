@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="form">
+    <form *ngIf="!card" [formGroup]="form">
     <mat-form-field appearance="outline">
         <mat-label>Question</mat-label>
         <input matInput type="text" formControlName="question" name="question" required>
@@ -9,6 +9,10 @@
         <mat-label>Answer #{{i+1}}</mat-label>
         <input matInput (keyup)="onAnswerChange(input.value, i, $event)" #input >
     </mat-form-field>
-</form>
     <button [disabled]="!form.valid || answers.length<2" (click)="onSave()">Save card</button>
+</form>
+<div *ngIf="card">
+    <span>Question:{{card.question}}</span>
+    <span *ngFor="let answer of card.answers">Answers:{{answer.text}}</span>
+</div>
 </div>

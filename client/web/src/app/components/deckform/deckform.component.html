@@ -10,8 +10,8 @@
         <mat-label>Description</mat-label>
         <textarea matInput type="text"  [formControl]="description" #input ></textarea>
     </mat-form-field>
-    <div *ngFor="let card of cards">{{card.front}}</div>
+    <div (click)="onCard(card)" *ngFor="let card of cards">{{card.question}}</div>
     <button class="button-7" *ngIf="!isCardFormVisible" (click)="showCardForm()">Add card</button>
-    <app-cardform (cardEmitter)="saveCard($event)" *ngIf="isCardFormVisible"></app-cardform>
+    <app-cardform [card]="selectedCard" (cardEmitter)="saveCard($event)" *ngIf="isCardFormVisible"></app-cardform>
     <button class="button-7" (click)="onSave()">Save deck</button>
 </div>

@@ -1,7 +1,7 @@
 import { Answer } from "./Answer";
 
 export type Card={
-    front:string,
-    back:Answer[],
+    question:string,
+    answers:Answer[],
     confirmed:boolean;
 }

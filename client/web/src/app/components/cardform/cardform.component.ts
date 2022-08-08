@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input,Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Card } from 'src/app/models/Card';
 import { Answer } from 'src/app/models/Answer';
 @Component({
@@ -7,18 +7,17 @@ import { Answer } from 'src/app/models/Answer';
   templateUrl: './cardform.component.html',
   styleUrls: ['./cardform.component.scss']
 })
-export class CardformComponent implements OnInit {
-
+export class CardformComponent {
+  
   @Output() cardEmitter: EventEmitter<Card> = new EventEmitter();
+  @Input() card:Card|null = null;
   error: boolean = false;
-
   form: FormGroup = new FormGroup({
     question: new FormControl("", [Validators.required, Validators.minLength(3)]),
   });
   answers: string[] = [''];
 
-  ngOnInit(): void {
-  }
+  constructor(){}
 
   onAnswerChange(text: string, i: number, event: KeyboardEvent): void {
     if (event.code !== 'Tab') {
@@ -42,8 +41,8 @@ export class CardformComponent implements OnInit {
       return { text: answer, confirmed: true }
     });
     const card: Card = {
-      front: question,
-      back: answers,
+       question,
+       answers,
       confirmed: true
     }
     this.cardEmitter.emit(card);
