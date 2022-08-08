@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.dekker.spring.repositories.DeckRepository;
 import com.dekker.spring.models.Deck;
 import com.dekker.spring.models.Response;
@@ -20,6 +21,7 @@ public class DeckController {
     @Autowired
 	private DeckRepository deckRepository;
 	
+	
     //get all decks
 	@GetMapping("/decks")
 	public Response getAllDecks(){
@@ -30,10 +32,11 @@ public class DeckController {
     // create deck
 	@PostMapping("/decks")
 	public Response createDeck(@RequestBody Deck deck) {
-        Deck newDeck = new Deck();
-        newDeck.setDescription(deck.getDescription());
-        newDeck.setTitle(deck.getTitle());
-		deckRepository.save(newDeck);
+		deck.getCards().forEach(card->{
+			card.setDeck(deck);
+			card.getAnswers().forEach(answer->answer.setCard(card));
+		});
+		deckRepository.save(deck);
         return new Response("success");
 	}
 }

@@ -1,7 +1,5 @@
 package com.dekker.spring.models;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,41 +9,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "cards")
-public class Card {
+@Table(name = "answers")
+public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne(fetch = FetchType.LAZY, optional = false, cascade=CascadeType.ALL)
-    @JoinColumn(name = "deck_id")
+    @JoinColumn(name = "card_id")
     @JsonIgnore
-    private Deck deck;
-    @Column(name = "question")
-    private String question;
+    private Card card;
+    @Column(name = "text")
+    private String text;
     @Column(name = "confirmed")
     private boolean confirmed;
-    @OneToMany(mappedBy = "card", orphanRemoval = true, cascade = CascadeType.ALL)
-    private List<Answer> answers;
 
     // @Column(name = "back")
     // private String back;
 
-    public Card() {
-    };
-
-    public Card(Deck deck, String question, boolean confirmed, List<Answer> answers) {
-        this.deck = deck;
-        this.question = question;
+    public Answer(){};
+    public Answer(Card card,String text, boolean confirmed) {
+        this.card = card;
+        this.text = text;
         this.confirmed = confirmed;
-        this.answers = answers;
     }
-
     public long getId() {
         return id;
     }
@@ -54,39 +45,26 @@ public class Card {
         this.id = id;
     }
 
-    public Deck getDeck() {
-        return deck;
+    public Card getCard() {
+        return card;
     }
 
-    public void setDeck(Deck deck) {
-        this.deck = deck;
+    public void setCard(Card card) {
+        this.card = card;
+    }
+    public String getText() {
+        return text;
     }
 
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public boolean getConfirmed() {
         return confirmed;
     }
-
     public void setConfirmed(boolean confirmed) {
         this.confirmed = confirmed;
     }
 
-    public List<Answer> getAnswers() {
-        return this.answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
-
-    public void addAnswer(Answer answers) {
-        this.answers.add(answers);
-    }
 }

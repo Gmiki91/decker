@@ -1,6 +1,8 @@
 package com.dekker.spring.models;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,9 +25,11 @@ public class Deck {
     private String description;
 
     @Column(name = "cards")
-    @OneToMany
+    @OneToMany(mappedBy = "deck", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Card> cards;
-    public Deck(){}
+
+    public Deck() {
+    }
 
     public Deck(String title, String description, List<Card> cards) {
         super();
@@ -66,7 +70,7 @@ public class Deck {
         this.cards = cards;
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         this.cards.add(card);
     }
 
