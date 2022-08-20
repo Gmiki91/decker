@@ -7,11 +7,12 @@
         </div>
     </div>
     <div class="content">
-        <div class="list shadow game-list" *ngIf="deck && isDeckActive">
+        <div class="list shadow game-list" *ngIf="deck "><!--&& isDeckActive-->
             <h2>Open games</h2>
-            
-            <span>szia</span>
+            <p *ngFor="let room of roomList$| async" (click)="onJoinRoom(room)">{{room}}</p>
         </div>
+        <button class="btn button-7" (click)="onHostRoom()">Host game</button>
+     
         <div class="list shadow card-list" *ngIf="deck">
             <h2>Cards</h2>
             <h4 >Accepted</h4>

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Deck } from "../models/Deck";
 import { environment } from "src/environments/environment";
-import { BehaviorSubject, map, filter } from "rxjs";
+import { BehaviorSubject, map, Observable } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
@@ -14,14 +14,12 @@ export class DeckService {
     constructor(private http: HttpClient) { }
 
     addDeck(deck: Deck): void {
-        this.http.post(`${environment.SPRING_URL}/decks/`, deck).subscribe(result => {
-            console.log(result);
+        this.http.post(`${environment.SERVER_URL}/decks/`, deck).subscribe(result => {
         })
-        // this.mockData.push(deck);
     }
 
     updateDecks(isActive: boolean = true) {
-        this.http.get<{ status: string, data: Deck[] }>(`${environment.SPRING_URL}/decks/`)
+        this.http.get<{ status: string, data: Deck[] }>(`${environment.SERVER_URL}/decks/`)
             .subscribe(result => {
                 if (result.data.length > 0)
                     this.decks.next(result.data);
@@ -36,11 +34,12 @@ export class DeckService {
     getDecks() {
         return this.decks.asObservable();
     }
-    getDeck(id: string) {
-        //http call
-        return this.decks.pipe(map(decks => {
-            return decks
-                .find(deck => deck.id === id)
+    
+    getDeck(id: string): Observable<Deck> {
+        return this.http.get<{ status: string, data: Deck }>(`${environment.SERVER_URL}/decks/${id}`).pipe(map(result => {
+            if (result.status === 'success')
+                return result.data;
+            return {} as Deck;
         }))
     }
 }

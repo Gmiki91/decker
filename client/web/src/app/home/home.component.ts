@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { Observable, map, filter } from 'rxjs';
 import { DeckformComponent } from '../components/deckform/deckform.component';
-import { Deck } from '../models/Deck';
 import { DeckService } from '../services/deck.service';
 
 @Component({
@@ -12,16 +10,12 @@ import { DeckService } from '../services/deck.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  list!: Deck[];
   search:string="";
   toggle:boolean=true;
   
   constructor(private deckService: DeckService,public dialog: MatDialog) {
   }
   ngOnInit(): void {
-    this.deckService.getDecks()
-      .subscribe(decks =>{this.list = decks; console.log(this.list)})
-    this.deckService.updateDecks();
   }
 
   toggleChanges(event:MatSlideToggleChange):void{

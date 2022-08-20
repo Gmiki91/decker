@@ -34,7 +34,6 @@ export class DeckformComponent implements OnInit {
   onCard(card:Card):void{
     this.selectedCard=card;
     this.isCardFormVisible=true;
-    console.log(card);
   }
   saveCard(card:Card):void {
     this.isCardFormVisible=false;

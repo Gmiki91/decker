@@ -21,7 +21,6 @@ export class CardformComponent {
 
   onAnswerChange(text: string, i: number, event: KeyboardEvent): void {
     if (event.code !== 'Tab') {
-      console.log(event);
       if (text.trim().length > 0) {
         //new answer
         if (i === this.answers.length - 1) {

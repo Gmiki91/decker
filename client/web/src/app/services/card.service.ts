@@ -11,13 +11,12 @@ export class CardService {
     constructor(private http: HttpClient) { }
 
     addCard(card: Card,deckId: string) : void {
-        this.http.post(`${environment.SPRING_URL}/cards/${deckId}`, card).subscribe(result => {
-            console.log(result);
+        this.http.post(`${environment.SERVER_URL}/cards/${deckId}`, card).subscribe(result => {
         })
     }
 
     updateCardsById(deckId:string) {
-        this.http.get<{status:string, data:Card[]}>(`${environment.SPRING_URL}/cards/${deckId}`)
+        this.http.get<{status:string, data:Card[]}>(`${environment.SERVER_URL}/cards/${deckId}`)
             .subscribe(result => {
                 if (result.data.length > 0)
                     this.cards.next(result.data);

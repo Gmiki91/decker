@@ -1,7 +1,7 @@
 import { Card } from "./Card";
 
 export type Deck={
-    id?:string;
+    _id?:string;
     title:string;
     description?:string;
     owner:number;

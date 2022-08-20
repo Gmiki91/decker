@@ -1,5 +1,5 @@
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
-import { BehaviorSubject, Observable } from "rxjs";
+import { BehaviorSubject, catchError, finalize, Observable, of } from "rxjs";
 import { Deck } from "src/app/models/Deck";
 import { DeckService } from "src/app/services/deck.service";
 export class DeckDataSource implements DataSource<Deck> {
@@ -8,9 +8,7 @@ export class DeckDataSource implements DataSource<Deck> {
 
     public loading$ = this.loadingSubject.asObservable();
 
-    constructor(private deckService: DeckService) {
-        
-    }
+    constructor(private deckService: DeckService) {}
 
     connect(collectionViewer: CollectionViewer): Observable<Deck[]> {
         return this.dekcsSubject.asObservable();
@@ -22,10 +20,12 @@ export class DeckDataSource implements DataSource<Deck> {
     }
 
     loadLessons() {
-
         this.loadingSubject.next(true);
-
-        this.deckService.getDecks()
-            .subscribe(decks => this.dekcsSubject.next(decks));
+        this.deckService.getDecks().pipe(catchError(() => of([])))
+            .subscribe(decks => {
+                this.dekcsSubject.next(decks);
+                this.loadingSubject.next(false)
+            });
+        this.deckService.updateDecks();
     }
 }
